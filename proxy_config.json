@@ -1,0 +1,20 @@
+{
+  "proxy": {
+    "ip": "127.0.0.1",
+    "port": 1080,
+    "auth": {
+      "enabled": false,
+      "username": "",
+      "password": ""
+    }
+  },
+  "mappings": {
+    "mappings": []
+  },
+  "settings": {
+    "autostart": false,
+    "notifications": false,
+    "timeout": 10,
+    "transparency": 88
+  }
+}
