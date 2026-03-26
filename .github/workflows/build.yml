@@ -49,37 +49,4 @@ jobs:
           name: TgWsProxy
           path: dist/TgWsProxy_windows.exe
 
-  build-win7:
-    runs-on: windows-latest
-    strategy:
-      matrix:
-        include:
-          - arch: x64
-            suffix: 64bit
-          - arch: x86
-            suffix: 32bit
-    steps:
-      - uses: actions/checkout@v6
-
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.8"
-          architecture: ${{ matrix.arch }}
-          cache: "pip"
-          
-      - name: Install dependencies & pyinstaller
-        run: pip install . "pyinstaller==5.13.2"
-
-      - name: Build EXE with PyInstaller
-        run: pyinstaller packaging/windows.spec --noconfirm
-
-      - name: Rename artifact
-        run: mv dist/TgWsProxy.exe dist/TgWsProxy_windows_7_${{ matrix.suffix }}.exe
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v7
-        with:
-          name: TgWsProxy-win7-${{ matrix.suffix }}
-          path: dist/TgWsProxy_windows_7_${{ matrix.suffix }}.exe
-
   
